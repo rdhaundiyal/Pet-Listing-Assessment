@@ -21,7 +21,7 @@ namespace AGL.Assessment.Web.Mvc.Controllers
         public ActionResult Pet(string petType)
         {
             var peopleWithCat = _peopleDomain.GetOwnersByPetType(petType);
-            var model = peopleWithCat.ToOwnerGenderWisePetsViewModel(petType, SortOrder.Descending);
+            var model = peopleWithCat.ToOwnerGenderWisePetsViewModel(petType, SortOrder.Ascending);
             return View(model);
         }
     }

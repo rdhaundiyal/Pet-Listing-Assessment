@@ -23,7 +23,7 @@ namespace AGL.Assessment.Web.Mvc.Mapper
 
                 foreach (var pet in gender.SelectMany(person => person.pets.Where(pet => pet.type.Equals(petType, StringComparison.InvariantCultureIgnoreCase))))
                 {
-                    genderView.Pets.Add(pet.name);
+                    genderView.Add(pet.name);
                 }
                 result.Add(genderView);
 
