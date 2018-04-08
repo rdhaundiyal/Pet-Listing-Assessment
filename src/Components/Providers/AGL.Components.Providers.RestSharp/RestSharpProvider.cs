@@ -8,7 +8,7 @@ namespace AGL.Components.Providers.RestSharp
 {
     public class RestSharpProvider : IProvider
     {
-        private readonly RestClient _restClient;
+        private readonly IRestClient _restClient;
 
 
         public string BaseUrl
@@ -23,20 +23,16 @@ namespace AGL.Components.Providers.RestSharp
         {
             _restClient = new RestClient(baseUrl);
         }
-
+        public RestSharpProvider(IRestClient restClient)
+        {
+            _restClient = restClient;
+        }
 
         public T Get<T>(string resource) where T : class, new()
         {
             var response = Execute<T>(resource, Method.GET);
             ValidateResponse(response);
             return response.Data;
-        }
-
-        public async Task<T> GetAsync<T>(string resource) where T : class, new()
-        {
-            var response = await _restClient.ExecuteTaskAsync<T>(BuildRestRequest(resource, Method.GET)) as RestResponse<T>;
-            ValidateResponse(response);
-            return response != null ? response.Data : null;
         }
 
 
@@ -55,8 +51,6 @@ namespace AGL.Components.Providers.RestSharp
             if (response.ResponseStatus != ResponseStatus.Completed)
 
                 throw new RestException(response.ResponseUri.AbsoluteUri, response.ErrorMessage);
-
-
         }
     }
 }

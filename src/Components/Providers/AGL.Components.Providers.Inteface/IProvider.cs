@@ -10,8 +10,6 @@ namespace AGL.Components.Providers.Inteface
     {
         T Get<T>(string resourcel) where T : class, new();
 
-        Task<T> GetAsync<T>(string resource) where T : class, new();
-
-
+ 
     }
 }
