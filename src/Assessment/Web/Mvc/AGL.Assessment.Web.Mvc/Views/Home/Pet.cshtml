@@ -1,0 +1,18 @@
+﻿@using AGL.Assessment.Web.Mvc.Models;
+@model IList<OwnerGenderWisePetsViewModel>
+
+@{
+    ViewBag.Title = "title";
+   
+}
+
+<h2>Owner Gender Based Pets list </h2>
+
+@foreach (var gender in Model)
+{
+    <h3><u>@gender.Gender</u></h3>
+    foreach (var pet in gender.Pets)
+    {
+        <i> @pet</i><br />
+    }
+}
