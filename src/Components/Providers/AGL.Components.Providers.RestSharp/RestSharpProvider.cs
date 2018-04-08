@@ -13,7 +13,7 @@ namespace AGL.Components.Providers.RestSharp
 
         public string BaseUrl
         {
-            set { _restClient.BaseUrl=new Uri(value);}
+            set { _restClient.BaseUrl = new Uri(value); }
         }
         public RestSharpProvider()
         {
@@ -23,7 +23,7 @@ namespace AGL.Components.Providers.RestSharp
         {
             _restClient = new RestClient(baseUrl);
         }
-      
+
 
         public T Get<T>(string resource) where T : class, new()
         {
@@ -31,14 +31,12 @@ namespace AGL.Components.Providers.RestSharp
             ValidateResponse(response);
             return response.Data;
         }
-        
-        public Task<T> GetAsync<T>(string resource) where T : class, new()
+
+        public async Task<T> GetAsync<T>(string resource) where T : class, new()
         {
-            throw new NotImplementedException();
-            //_apiKey = key;
-            //var response = await _restClient.ExecuteTaskAsync<T>(BuildRestRequest(resource, Method.GET)) as RestResponse<T>;
-            //ThrowExceptionIfNeedsBe(response);
-            //return response.Data;
+            var response = await _restClient.ExecuteTaskAsync<T>(BuildRestRequest(resource, Method.GET)) as RestResponse<T>;
+            ValidateResponse(response);
+            return response != null ? response.Data : null;
         }
 
 
@@ -50,16 +48,15 @@ namespace AGL.Components.Providers.RestSharp
 
         private IRestResponse<T> Execute<T>(string resource, Method methodType) where T : class, new()
         {
-           ;
-            return _restClient.Execute<T>(BuildRestRequest(resource, methodType)) as RestResponse<T>;
+                        return _restClient.Execute<T>(BuildRestRequest(resource, methodType)) as RestResponse<T>;
         }
         protected virtual void ValidateResponse(IRestResponse response)
         {
             if (response.ResponseStatus != ResponseStatus.Completed)
 
                 throw new RestException(response.ResponseUri.AbsoluteUri, response.ErrorMessage);
-           
-           
+
+
         }
     }
 }

@@ -1,8 +1,12 @@
-﻿namespace AGL.Assessment.Domain.Dto
+﻿using Newtonsoft.Json;
+
+namespace AGL.Assessment.Domain.Dto
 {
     public class Pet
     {
-        public string name { get; set; }
-        public string type { get; set; }
+         [JsonProperty(PropertyName = "name")]
+        public string Name { get; set; }
+         [JsonProperty(PropertyName = "type")]
+        public string Type { get; set; }
     }
 }

@@ -4,7 +4,9 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
+using AGL.Assessment.Domain.Exceptions;
 using AGL.Assessment.Domain.Helpers;
+using AGL.Components.Providers.Inteface.Exception;
 
 namespace AGL.Assessment.Domain
 {
@@ -17,23 +19,31 @@ namespace AGL.Assessment.Domain
             _peopleRepository = peopleRepository;
         }
      
-
-        public IList<Person> GetPeople()
-        {
-            return _peopleRepository.GetAll(ConfigSettings.PeopleServiceUri);
-        }
+   
 
         public IList<Person> GetOwnersByPetType(string petType)
         {
-            var result = _peopleRepository.GetAll(ConfigSettings.PeopleServiceUri);
+            try
+            {
+                var result = _peopleRepository.GetAll(ConfigSettings.PeopleServiceUri);
 
-            return result.Where(person => person.pets != null && person.pets.Any(p => p.type.Equals(petType, StringComparison.InvariantCultureIgnoreCase))).ToList();
+                return
+                    result.Where(
+                        person =>
+                            person.Pets != null &&
+                            person.Pets.Any(p => p.Type.Equals(petType, StringComparison.InvariantCultureIgnoreCase)))
+                        .ToList();
+            }
+            catch (RestException ex)
+            {
+                throw new AssessmentException();
+            }
+            catch (Exception ex)
+            {
+                throw new AssessmentException();
+            }
         }
 
       
-
-
-
-
     }
 }

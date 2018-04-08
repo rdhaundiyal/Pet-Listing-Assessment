@@ -7,7 +7,7 @@ namespace AGL.Assessment.Domain
 {
     public interface IPeopleDomain
     {
-        IList<Person> GetPeople();
+      
         IList<Person> GetOwnersByPetType(string petType);
     }
 }

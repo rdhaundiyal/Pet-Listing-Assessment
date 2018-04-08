@@ -13,7 +13,7 @@ namespace AGL.Assessment.Web.Mvc.Mapper
         public static IList<OwnerGenderWisePetsViewModel> ToOwnerGenderWisePetsViewModel(this IList<Person> personList, string petType ,SortOrder sortOrder=SortOrder.None)
         {
 
-            var ownerGenderWiseCatList = personList.GroupBy(k => k.gender);
+            var ownerGenderWiseCatList = personList.GroupBy(k => k.Gender);
 
 
             var result = new List<OwnerGenderWisePetsViewModel>();
@@ -21,9 +21,9 @@ namespace AGL.Assessment.Web.Mvc.Mapper
             {
                 var genderView = new OwnerGenderWisePetsViewModel(sortOrder) { Gender = gender.Key };
 
-                foreach (var pet in gender.SelectMany(person => person.pets.Where(pet => pet.type.Equals(petType, StringComparison.InvariantCultureIgnoreCase))))
+                foreach (var pet in gender.SelectMany(person => person.Pets.Where(pet => pet.Type.Equals(petType, StringComparison.InvariantCultureIgnoreCase))))
                 {
-                    genderView.Add(pet.name);
+                    genderView.Add(pet.Name);
                 }
                 result.Add(genderView);
 

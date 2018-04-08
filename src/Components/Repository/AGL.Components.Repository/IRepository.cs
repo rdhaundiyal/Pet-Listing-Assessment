@@ -5,8 +5,8 @@ namespace AGL.Components.Repository
 {
     public interface IRepository<T> where T : class
     {
-        T Get(string resource);
-        Task<T> GetAsync(string resource);
+    
+        Task<IList<T>> GetAllAsync(string resource);
         IList<T> GetAll(string resource);
 
     }

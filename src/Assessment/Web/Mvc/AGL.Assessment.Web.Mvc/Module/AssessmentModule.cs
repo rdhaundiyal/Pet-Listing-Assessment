@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using Autofac;
 using AGL.Assessment.Domain;
+using AGL.Assessment.Domain.Helpers;
 using AGL.Assessment.Domain.Repositories;
 using AGL.Components.Helpers;
 using AGL.Components.Providers.Inteface;
@@ -15,7 +16,7 @@ namespace AGL.Assessment.Web.Mvc.Module
     {
         protected override void Load(ContainerBuilder builder)
         {
-            builder.RegisterType<RestSharpProvider>().As<IProvider>().WithParameter("baseUrl", ConfigHelper.GetValue<string>("BaseUrl"));
+            builder.RegisterType<RestSharpProvider>().As<IProvider>().WithParameter("baseUrl", ConfigSettings.BaseUrl);
             builder.RegisterType<PeopleRepository>().As<IPeopleRepository>();
             builder.RegisterType<PeopleDomain>().As<IPeopleDomain>();
            

@@ -7,7 +7,11 @@
 }
 
 <h2>Owner Gender Based Pets list </h2>
-
+ 
+        @if (Model == null || Model.Count == 0)
+        {
+            <b>No records found</b>
+        }
 @foreach (var gender in Model)
 {
     <h3><u>@gender.Gender</u></h3>
