@@ -1,10 +1,15 @@
-﻿namespace AGL.Components.Logger
+﻿using System;
+
+namespace AGL.Components.Logger
 {
     public interface ILogger
     {
-        void Error(string message);
-        void Info(string message);
-        void Debug(string message);
-        void Warning(string message);
+        void LogException(string message, Exception exception);
+        void LogInfo(string message);
+        void LogWarning(string message);
+        void LogError(string message);
+        void LogDebug(string message);
+
+
     }
 }

@@ -26,7 +26,7 @@ namespace AGL.Assessment.Domain
             try
             {
                 var result = _peopleRepository.GetAll(ConfigSettings.PeopleServiceUri);
-
+                if (result== null) return null;
                 return
                     result.Where(
                         person =>

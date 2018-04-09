@@ -63,20 +63,17 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
-    <Compile Include="TestPeopleDomain.cs" />
+    <Compile Include="Test_PeopleDomain.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="App.config" />
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\..\Components\Providers\AGL.Components.Providers.Inteface\AGL.Components.Providers.Inteface.csproj">
       <Project>{c665faa7-3764-48d6-aa74-846371aa5b8b}</Project>
       <Name>AGL.Components.Providers.Inteface</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\..\..\Components\Providers\AGL.Components.Providers.RestProviders.Test\AGL.Components.Providers.RestProviders.Test.csproj">
-      <Project>{f22817be-e277-4a2e-8f94-15fa3175b428}</Project>
-      <Name>AGL.Components.Providers.RestProviders.Test</Name>
     </ProjectReference>
     <ProjectReference Include="..\..\..\Components\Providers\AGL.Components.Providers.RestSharp\AGL.Components.Providers.RestSharp.csproj">
       <Project>{4ba57eef-5873-4ec6-a64e-129ed6a24b45}</Project>
