@@ -11,16 +11,15 @@ namespace AGL.Assessment.Web.Mvc.Mapper
     {
         public static IList<OwnerGenderWisePetsViewModel> ToOwnerGenderWisePetsViewModel(this IList<Person> personList, string petType ,SortOrder sortOrder=SortOrder.None)
         {
-
+            personList = personList.Where(k => k.Pets != null).ToList();
             var ownerGenderWiseCatList = personList.GroupBy(k => k.Gender);
-
-
+            
             var result = new List<OwnerGenderWisePetsViewModel>();
             foreach (var gender in ownerGenderWiseCatList)
             {
                 var genderView = new OwnerGenderWisePetsViewModel(sortOrder) { Gender = gender.Key };
 
-                foreach (var pet in gender.SelectMany(person => person.Pets.Where(pet => pet.Type.Equals(petType, StringComparison.InvariantCultureIgnoreCase))))
+                foreach (var pet in gender.SelectMany(person => person.Pets.Where(pet =>pet!=null && pet.Type.Equals(petType, StringComparison.InvariantCultureIgnoreCase))))
                 {
                     genderView.Add(pet.Name);
                 }
