@@ -1,12 +1,11 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using log4net;
 namespace AGL.Components.Logger
 {
-  public  class Logger:ILogger
+    /// <summary>
+    /// ILogger implementation using Log4net library
+    /// </summary>
+    public class Logger : ILogger
     {
         private readonly ILog _log;
 
@@ -27,7 +26,7 @@ namespace AGL.Components.Logger
             _log = LogManager.GetLogger(namedLogger);
         }
 
-    
+
         /// <summary>
         /// The log exception.
         /// </summary>
@@ -74,6 +73,6 @@ namespace AGL.Components.Logger
             _log.Debug(message);
         }
 
-       
+
     }
 }

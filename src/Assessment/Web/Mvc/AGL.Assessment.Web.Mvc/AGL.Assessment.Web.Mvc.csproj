@@ -220,6 +220,10 @@
       <Project>{9b1be991-6545-403a-b371-c8da922d58ae}</Project>
       <Name>AGL.Components.Helpers</Name>
     </ProjectReference>
+    <ProjectReference Include="..\..\..\..\Components\Logger\AGL.Components.Logger\AGL.Components.Logger.csproj">
+      <Project>{9F3D0CF5-C1E8-4CC0-863F-A79A04B2B891}</Project>
+      <Name>AGL.Components.Logger</Name>
+    </ProjectReference>
     <ProjectReference Include="..\..\..\..\Components\Providers\AGL.Components.Providers.Inteface\AGL.Components.Providers.Inteface.csproj">
       <Project>{c665faa7-3764-48d6-aa74-846371aa5b8b}</Project>
       <Name>AGL.Components.Providers.Inteface</Name>

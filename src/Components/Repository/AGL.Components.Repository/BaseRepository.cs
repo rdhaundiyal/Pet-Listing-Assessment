@@ -1,7 +1,5 @@
 ﻿using System.Collections.Generic;
-using System.Threading.Tasks;
 using AGL.Components.Providers.Inteface;
-using System;
 
 namespace AGL.Components.Repository
 {
@@ -15,11 +13,8 @@ namespace AGL.Components.Repository
         }
         public virtual IList<T> GetAll(string resource)
         {
-
             return _serviceProvider.Get<List<T>>(resource);
-
         }
 
-      
     }
 }

@@ -3,7 +3,7 @@ using System.Configuration;
 
 namespace AGL.Components.Helpers
 {
-  public static class ConfigHelper
+    public static class ConfigHelper
     {
         /// <summary>
         /// Gets appSettings configuration value for specified key.
@@ -20,13 +20,13 @@ namespace AGL.Components.Helpers
                 throw new ConfigurationErrorsException(
                     string.Format("AppSettings Configuration value missing for key '{0}'.", key));
             }
-           
-                // deal with special case type - eg. bool
-            if (typeof (T) == typeof (bool))
-                return (T) ((object)ConfigurationManager.AppSettings[key].Equals("true", StringComparison.OrdinalIgnoreCase));
-               
-                    return (T)Convert.ChangeType(ConfigurationManager.AppSettings[key], typeof(T));
-            
+
+            // deal with special case type - eg. bool
+            if (typeof(T) == typeof(bool))
+                return (T)((object)ConfigurationManager.AppSettings[key].Equals("true", StringComparison.OrdinalIgnoreCase));
+
+            return (T)Convert.ChangeType(ConfigurationManager.AppSettings[key], typeof(T));
+
         }
 
     }

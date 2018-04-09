@@ -71,6 +71,10 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\..\Components\Logger\AGL.Components.Logger\AGL.Components.Logger.csproj">
+      <Project>{9f3d0cf5-c1e8-4cc0-863f-a79a04b2b891}</Project>
+      <Name>AGL.Components.Logger</Name>
+    </ProjectReference>
     <ProjectReference Include="..\..\..\Components\Providers\AGL.Components.Providers.Inteface\AGL.Components.Providers.Inteface.csproj">
       <Project>{c665faa7-3764-48d6-aa74-846371aa5b8b}</Project>
       <Name>AGL.Components.Providers.Inteface</Name>

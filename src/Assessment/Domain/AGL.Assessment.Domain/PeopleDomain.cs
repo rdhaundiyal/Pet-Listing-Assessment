@@ -3,9 +3,9 @@ using AGL.Assessment.Domain.Repositories;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Linq.Expressions;
 using AGL.Assessment.Domain.Exceptions;
 using AGL.Assessment.Domain.Helpers;
+using AGL.Components.Logger;
 using AGL.Components.Providers.Inteface.Exception;
 
 namespace AGL.Assessment.Domain
@@ -13,15 +13,14 @@ namespace AGL.Assessment.Domain
     public class PeopleDomain : IPeopleDomain
     {
         private readonly IPeopleRepository _peopleRepository;
-        public PeopleDomain(IPeopleRepository peopleRepository)
+        private readonly ILogger _logger;
+        public PeopleDomain(IPeopleRepository peopleRepository,ILogger logger)
         {
-
             _peopleRepository = peopleRepository;
+            _logger = logger;
         }
      
-   
-
-        public IList<Person> GetOwnersByPetType(string petType)
+   public IList<Person> GetOwnersByPetType(string petType)
         {
             try
             {
@@ -36,10 +35,12 @@ namespace AGL.Assessment.Domain
             }
             catch (RestException ex)
             {
+                _logger.LogError(ex.Message);
                 throw new AssessmentException();
             }
             catch (Exception ex)
             {
+                _logger.LogError(ex.Message);
                 throw new AssessmentException();
             }
         }

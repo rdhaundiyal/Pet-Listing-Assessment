@@ -1,25 +1,23 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
-using System.Web;
 using AGL.Assessment.Domain.Model;
 
 namespace AGL.Assessment.Web.Mvc.Models
 {
-    public class OwnerGenderWisePetsViewModel:List<string>
+    public class OwnerGenderWisePetsViewModel : List<string>
     {
         private readonly SortOrder _sortOrder;
-       
+
         public OwnerGenderWisePetsViewModel(SortOrder sortOrder)
         {
             _sortOrder = sortOrder;
-          
+
 
         }
         public OwnerGenderWisePetsViewModel()
         {
             _sortOrder = SortOrder.None;
-          
+
         }
         public string Gender { get; set; }
 

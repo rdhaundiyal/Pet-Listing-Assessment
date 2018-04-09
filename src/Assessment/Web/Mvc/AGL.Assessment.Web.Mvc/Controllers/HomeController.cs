@@ -1,12 +1,7 @@
 ﻿using AGL.Assessment.Domain;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
 using System.Web.Mvc;
 using AGL.Assessment.Domain.Model;
 using AGL.Assessment.Web.Mvc.Mapper;
-using AGL.Assessment.Web.Mvc.Models;
 
 namespace AGL.Assessment.Web.Mvc.Controllers
 {

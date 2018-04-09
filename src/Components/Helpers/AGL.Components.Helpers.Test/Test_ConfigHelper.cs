@@ -1,5 +1,4 @@
-﻿using System;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System.Configuration;
 
 namespace AGL.Components.Helpers.Test
@@ -18,7 +17,7 @@ namespace AGL.Components.Helpers.Test
         {
             var result = ConfigHelper.GetValue<bool>("CacheEnabled");
             Assert.AreEqual(false, result);
-            
+
         }
         [TestMethod]
         [ExpectedException(typeof(ConfigurationErrorsException), "AppSettings Configuration value missing for key 'DemoKey'.")]
